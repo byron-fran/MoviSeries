@@ -9,7 +9,9 @@ const Navigation = () => {
 
     return (
         <Stack.Navigator>
-            <Stack.Screen name='homeScreen' component={HomeScreen}/>
+            <Stack.Screen options={{
+                headerShown : false
+            }} name='homeScreen' component={HomeScreen}/>
             <Stack.Screen name='detailScreen' component={DetailScreen}/>
         </Stack.Navigator>
 
