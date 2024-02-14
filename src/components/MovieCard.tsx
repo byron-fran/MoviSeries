@@ -3,17 +3,20 @@ import { Movie } from '../interfaces/MovieInterface'
 import { FC } from 'react'
 
 interface MovieCardProps {
-    movie: Movie
+    movie: Movie,
+    width? : number,
+    height? : number
+
 }
-const MovieCard: FC<MovieCardProps> = ({ movie }) => {
+const MovieCard: FC<MovieCardProps> = ({ movie, height = 420, width = 300}) => {
 
     const uri = `https://image.tmdb.org/t/p/w500/${movie?.poster_path}`
     return (
         <View style={{
-
-            width: 300,
-            height: 420
-        }}>
+            width,
+            height,
+            marginHorizontal : 7
+             }}>
             <View style={styles.imageContainer}>
 
                 <Image
