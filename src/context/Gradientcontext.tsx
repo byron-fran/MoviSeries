@@ -2,7 +2,7 @@ import React, { createContext, FC, ReactNode, useState } from 'react'
 import { View, Text } from 'react-native'
 
 
-interface ColorsBG {
+export interface ColorsBG {
     primary : string,
     secundary : string
 }

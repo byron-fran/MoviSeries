@@ -1,20 +1,18 @@
-import { View, ActivityIndicator, Dimensions, FlatList, ScrollView } from 'react-native'
-import { useNavigation } from '@react-navigation/native';
+import { View, ActivityIndicator, Dimensions,  ScrollView } from 'react-native'
 import useMovies from '../hooks/useMovies';
 import Carousel from 'react-native-snap-carousel';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import MovieCard from '../components/MovieCard';
 import MovieSliceHorizontal from '../components/MovieSliceHorizontal';
 import BackGroundGradient from './BackgroundGradient';
-import ImageColors from 'react-native-image-colors'
-import { AxiosError } from 'axios';
 import { getColors } from '../helpers/getColors';
 import { GradientContext } from '../context/Gradientcontext';
 import { useContext, useEffect } from 'react';
+
 const { width: windowWidth } = Dimensions.get('window');
 
 const HomeScreen = () => {
-    const Navigate = useNavigation();
+
     const { nowPlaying, popular, topRated, upcoming, isLoading } = useMovies();
     const { changeColors } = useContext(GradientContext)
     // Solo para dispositivos IOS
@@ -32,7 +30,6 @@ const HomeScreen = () => {
             getImageColors(0)
         }
     }, [nowPlaying]);
-
 
     return (
         <>

@@ -18,18 +18,18 @@ const MovieInfo = ({ movie, cast }: MovieProps) => {
             <View style={styles.containerInfo}>
                 <Text style={styles.title}>{movie.title}</Text>
                 <View style={styles.flexinfo}>
-                    <Text> <Icon name="star-outline" /> </Text>
-                    <Text>
+                    <Text> <Icon name="star-outline" color='#fff' /> </Text>
+                    <Text style={{color : '#fff'}}>
                         {movie.vote_average.toFixed(2)}
                     </Text>
                     <View style={styles.genresContainer}>
                         {movie.genres.map((genre) => (
-                            <Text key={genre.id}>{genre.name}{' '}</Text>
+                            <Text key={genre.id} style={styles.genresText}>{genre.name}{' '}</Text>
                         ))}
                     </View>
                 </View>
                 <Text style={styles.title}>History</Text>
-                <Text>{movie.overview}</Text>
+                <Text style={{color : '#fff'}}>{movie.overview}</Text>
                 <Text style={styles.bufgetText}>Budget: {formatQuantity(movie?.budget)}</Text>
             </View>
 
@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 20,
         fontWeight: 'bold',
-        color: '#000'
+        color: '#fff'
     },
     genresContainer: {
         display: 'flex',
@@ -76,11 +76,12 @@ const styles = StyleSheet.create({
 
     },
     genresText: {
-        color: '#000',
+        color: '#fff',
         marginLeft: 5
     },
     bufgetText: {
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        color : '#fff'
     }
 })
 export default MovieInfo

@@ -1,6 +1,5 @@
 import { View, Text, FlatList, StyleSheet } from 'react-native'
 import { Movie } from '../interfaces/MovieInterface'
-
 import MovieCard from './MovieCard'
 
 interface MovieSliceProps {
@@ -14,15 +13,12 @@ const MovieSliceHorizontal  = ({ title, movies} : MovieSliceProps) => {
             {title  && <Text style={styles.title}>{title}</Text>}
 
                <FlatList
-                        data={movies}
-                        renderItem={({ item }: any) => (<MovieCard width={140} height={200} movie={item} />)}
-                        keyExtractor={(item) => item.id.toString()}
-                        horizontal={true}
-                        showsHorizontalScrollIndicator={false}
-
-                    />
+                    data={movies}
+                    renderItem={({ item }: any) => (<MovieCard width={140} height={200} movie={item} />)}
+                    keyExtractor={(item) => item.id.toString()}
+                    horizontal={true}
+                    showsHorizontalScrollIndicator={false} />
         </View>
-
     )}
 
 const styles = StyleSheet.create({
