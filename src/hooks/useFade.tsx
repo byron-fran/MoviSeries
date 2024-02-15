@@ -4,15 +4,15 @@ import { useRef } from 'react'
 const Usefade = () => {
 
     const opacity = useRef( new Animated.Value(0)).current;
-    
-    const fadeIn = () => {
+
+    const fadeIn = (callback? : Function) => {
         Animated.timing(
             opacity , {
                 toValue : 1,
                 useNativeDriver : true,
-                duration : 1000
+                duration : 2000
             }
-        ).start()
+        ).start(callback ? callback(): null)
     }
 
     const fadeOut = () => {
@@ -20,7 +20,7 @@ const Usefade = () => {
             opacity, {
                 toValue : 0,
                 useNativeDriver : true,
-                duration : 1000
+                duration : 2000
             }
         ).start()
     }

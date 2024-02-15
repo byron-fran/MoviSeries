@@ -29,7 +29,9 @@ const styles = StyleSheet.create({
     title : {
         fontWeight : 'bold',
         fontSize : 30,
-        color : '#cb4f51'
+        color : '#fff',
+        marginLeft : 10,
+        marginBottom : 10
     }
 })    
 export default MovieSliceHorizontal

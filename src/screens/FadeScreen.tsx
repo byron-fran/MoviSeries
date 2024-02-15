@@ -18,7 +18,7 @@ const FadeScreen = () => {
                 backgroundColor : '#cbde51',
                 opacity 
            }}/>
-           <Button title='Fade In' onPress={fadeIn}/>
+           <Button title='Fade In' onPress={() => fadeIn()}/>
            <Button title='fade out' onPress={fadeOut}/>
         </View>
 

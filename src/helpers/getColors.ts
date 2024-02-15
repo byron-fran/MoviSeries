@@ -5,13 +5,13 @@ import ImageColors from 'react-native-image-colors';
 export const getColors = async (uri: string) => {
 
     let primary: string = '';
-    let secondary: string = '';
+    let secundary: string = '';
     try {
         const color = await ImageColors.getColors(uri, {});
 
         if (color.platform === 'android') {
             primary = color.dominant!
-            secondary = color.average!
+            secundary = color.average!
         }
         else {
             // Solo funciona para dispositivos IOS
@@ -24,6 +24,6 @@ export const getColors = async (uri: string) => {
     }
     return {
         primary,
-        secondary
+        secundary
     }
 }

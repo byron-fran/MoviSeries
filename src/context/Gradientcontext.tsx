@@ -13,14 +13,14 @@ interface ContextState  {
     changePrevColors : (colors : ColorsBG) => void
 }
 
-const GradientContext = createContext({}  as ContextState)
+export const GradientContext = createContext({}  as ContextState)
 
 type ContextProps = {
     children : ReactNode
 }
 const GradientProvider : FC<ContextProps>= ({children}) => {
     const [colors, setColors] = useState<ColorsBG>({
-        primary : 'transaperent',
+        primary : 'transparent',
         secundary : 'transparent'
     })
 
