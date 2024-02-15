@@ -1,8 +1,10 @@
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, FlatList } from 'react-native'
 import { MovieDetail as Movie } from '../interfaces/MovieDetail'
 import { CastElement } from '../interfaces/CastInterface'
 import Icon from 'react-native-vector-icons/Ionicons'
 import { formatQuantity } from '../helpers/currency'
+import CastItem from './CastItem'
+
 
 interface MovieProps {
     movie: Movie,
@@ -10,7 +12,7 @@ interface MovieProps {
 }
 const MovieInfo = ({ movie, cast }: MovieProps) => {
 
-    
+
     return (
         <>
             <View style={styles.containerInfo}>
@@ -29,6 +31,21 @@ const MovieInfo = ({ movie, cast }: MovieProps) => {
                 <Text style={styles.title}>History</Text>
                 <Text>{movie.overview}</Text>
                 <Text style={styles.bufgetText}>Budget: {formatQuantity(movie?.budget)}</Text>
+            </View>
+
+            <View style={styles.containerInfo}>
+                {/* Actors */}
+                <Text style={styles.title}>Actors</Text>
+
+                <FlatList
+              
+                    data={cast}
+                    renderItem={({ item }) => <CastItem actor={item} />
+                    }
+                    keyExtractor={(item) => item.id.toString()}
+                    horizontal={true}
+                    showsHorizontalScrollIndicator={false}
+                />
             </View>
 
         </>
@@ -52,18 +69,18 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         color: '#000'
     },
-    genresContainer : {
-        display : 'flex',
-        flexDirection : "row",
-        marginLeft : 5,
+    genresContainer: {
+        display: 'flex',
+        flexDirection: "row",
+        marginLeft: 5,
 
-    } ,
-    genresText : {
-        color : '#000',
-        marginLeft : 5
     },
-    bufgetText :{
-        fontWeight : 'bold'
+    genresText: {
+        color: '#000',
+        marginLeft: 5
+    },
+    bufgetText: {
+        fontWeight: 'bold'
     }
 })
 export default MovieInfo

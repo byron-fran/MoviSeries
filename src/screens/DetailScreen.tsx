@@ -1,8 +1,9 @@
-import { View, Text, Image, Dimensions, StyleSheet, ScrollView, ActivityIndicator } from 'react-native'
+import { View, Text, Image, Dimensions, StyleSheet, ScrollView, ActivityIndicator,TouchableOpacity } from 'react-native'
 import { StackScreenProps } from '@react-navigation/stack'
 import { RootStackParams } from '../Navigation/Navigation'
 import UseMovieDetail from '../hooks/useMovieDetail'
 import MovieInfo from '../components/MovieInfo';
+import Icon from 'react-native-vector-icons/Ionicons'
 
 const heightScreen = Dimensions.get('screen').height;
 
@@ -30,6 +31,12 @@ const DetailScreen = ({ navigation, route }: DetailScreenProps) => {
                
   
             </View>
+            <View style={styles.btnBack} >
+                <TouchableOpacity onPress={() => navigation.pop()}>
+                    <Icon name='arrow-back-outline' size={70} color='white'/>
+                </TouchableOpacity>
+            </View>
+            
         </ScrollView>
 
     )
@@ -50,5 +57,12 @@ const styles = StyleSheet.create({
     infoContainer :{
 
     },
+    btnBack : {
+        position : 'absolute',
+        zIndex : 999,
+        elevation : 9,
+        top: 5,
+        left : 5
+    }
 })
 export default DetailScreen
