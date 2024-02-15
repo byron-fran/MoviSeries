@@ -1,8 +1,10 @@
-import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native'
-import { Movie } from '../interfaces/MovieInterface'
+import { View, Text, Image, StyleSheet, TouchableOpacity, } from 'react-native'
+import { MovieDetail as Movie } from '../interfaces/MovieDetail';
 import { FC } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import Icon from 'react-native-vector-icons/Ionicons';
+
+
 interface MovieCardProps {
     movie: Movie,
     width?: number,
@@ -34,6 +36,7 @@ const MovieCard: FC<MovieCardProps> = ({ movie, height = 420, width = 300 }) => 
                 </View>
 
             </View>
+
         </TouchableOpacity>
 
     )
