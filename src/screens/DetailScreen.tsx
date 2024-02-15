@@ -5,6 +5,7 @@ import UseMovieDetail from '../hooks/useMovieDetail'
 import MovieInfo from '../components/MovieInfo';
 import Icon from 'react-native-vector-icons/Ionicons'
 
+
 const heightScreen = Dimensions.get('screen').height;
 
 interface DetailScreenProps extends StackScreenProps<RootStackParams, 'detailScreen'> { }
