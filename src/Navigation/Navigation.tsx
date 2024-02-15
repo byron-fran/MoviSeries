@@ -18,7 +18,8 @@ const Navigation = () => {
                 headerShown : false
             }} name='homeScreen' component={HomeScreen}/>
             <Stack.Screen options={ {
-                headerShown : false
+                headerShown : false,
+                
             }} name='detailScreen' component={DetailScreen}/>
         </Stack.Navigator>
 

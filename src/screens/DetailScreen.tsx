@@ -29,7 +29,7 @@ const DetailScreen = ({ navigation, route }: DetailScreenProps) => {
         };   
         getBgDetail()
     }, [])
-
+    console.log(movie.id)
     return (
 
         <LinearGradient colors={[ bgColors?.primary, bgColors?.secundary ]}

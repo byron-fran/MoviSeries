@@ -8,6 +8,7 @@ import BackGroundGradient from './BackgroundGradient';
 import { getColors } from '../helpers/getColors';
 import { GradientContext } from '../context/Gradientcontext';
 import { useContext, useEffect } from 'react';
+import SearchBar from '../components/SearchBar';
 
 const { width: windowWidth } = Dimensions.get('window');
 
@@ -39,6 +40,7 @@ const HomeScreen = () => {
             </View> : (
             <BackGroundGradient>
                 <ScrollView>
+                    <SearchBar/>
                     <View style={{ marginTop: top + 20, flex: 1 }}>
                         <View style={{ height: 440 }}>
                             <Carousel

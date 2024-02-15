@@ -1,5 +1,5 @@
 import { View, Text, Image, StyleSheet, TouchableOpacity, } from 'react-native'
-import { MovieDetail as Movie } from '../interfaces/MovieDetail';
+import { MovieDetail as Movie,  } from '../interfaces/MovieDetail';
 import { FC } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -11,13 +11,17 @@ interface MovieCardProps {
     height?: number
 
 }
+type NavigateProps = {
+   navigate : (route : string, movie : Movie) => void
+}
 const MovieCard: FC<MovieCardProps> = ({ movie, height = 420, width = 300 }) => {
 
     const uri = `https://image.tmdb.org/t/p/w500/${movie?.poster_path}`
-    const navigate = useNavigation()
+    const navigate = useNavigation<NavigateProps>()
+
     return (
         <TouchableOpacity
-            onPress={() => navigate.navigate('detailScreen', movie)} 
+            onPress={() => navigate.navigate('detailScreen', movie,)} 
             >
             <View style={{
                 width,
