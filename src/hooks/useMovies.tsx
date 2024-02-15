@@ -22,8 +22,6 @@ const useMovies = () => {
         upcoming : []
     })
 
-
-    const [popular, setPopular] = useState<Movie[]>([])
     const getMovies = async () => {
 
         try {

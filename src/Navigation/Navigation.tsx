@@ -1,9 +1,14 @@
 import { createNativeStackNavigator, } from '@react-navigation/native-stack';
 import HomeScreen from '../screens/HomeScreen';
 import DetailScreen from '../screens/DetailScreen';
+import { Movie } from '../interfaces/MovieInterface';
 
 
-const Stack = createNativeStackNavigator();
+export type RootStackParams ={
+    homeScreen : undefined,
+    detailScreen : Movie
+}
+const Stack = createNativeStackNavigator<RootStackParams>();
 
 const Navigation = () => {
 
@@ -12,7 +17,9 @@ const Navigation = () => {
             <Stack.Screen options={{
                 headerShown : false
             }} name='homeScreen' component={HomeScreen}/>
-            <Stack.Screen name='detailScreen' component={DetailScreen}/>
+            <Stack.Screen options={ {
+                headerShown : false
+            }} name='detailScreen' component={DetailScreen}/>
         </Stack.Navigator>
 
     )}
