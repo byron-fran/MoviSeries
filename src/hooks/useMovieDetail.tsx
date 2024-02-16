@@ -23,8 +23,8 @@ const UseMovieDetail = (idMovie : number) => {
 
     const getMovieDetail = async () => {
         try {
-            const movieDetail = MovieDB.get<Movie>(`/${idMovie}`);
-            const castList = MovieDB.get<CastInterface>(`${idMovie}/credits`);
+            const movieDetail = MovieDB.get<Movie>(`/movie/${idMovie}`);
+            const castList = MovieDB.get<CastInterface>(`/movie/${idMovie}/credits`);
             const data = await Promise.all([movieDetail, castList]);
             setMovieFullDetail({
                 isLoading : false,

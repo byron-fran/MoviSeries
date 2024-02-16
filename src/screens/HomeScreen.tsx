@@ -1,4 +1,4 @@
-import { View, ActivityIndicator, Dimensions,  ScrollView } from 'react-native'
+import { View, ActivityIndicator, Dimensions, ScrollView, Text } from 'react-native'
 import useMovies from '../hooks/useMovies';
 import Carousel from 'react-native-snap-carousel';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -9,6 +9,9 @@ import { getColors } from '../helpers/getColors';
 import { GradientContext } from '../context/Gradientcontext';
 import { useContext, useEffect } from 'react';
 import SearchBar from '../components/SearchBar';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
+
 
 const { width: windowWidth } = Dimensions.get('window');
 
@@ -31,32 +34,41 @@ const HomeScreen = () => {
             getImageColors(0)
         }
     }, [nowPlaying]);
+    useEffect(() => {
+        const getData = async () => {
+            const data = await AsyncStorage.getItem('movies')
+            
+        }
+        getData()
 
+    }, [])
     return (
         <>
-            {isLoading ? 
-            <View style={{flex : 1, alignItems : 'center', justifyContent : 'center'}}>
-                <ActivityIndicator size={60} />
-            </View> : (
-            <BackGroundGradient>
-                <ScrollView>
-                    <SearchBar/>
-                    <View style={{ marginTop: top + 20, flex: 1 }}>
-                        <View style={{ height: 440 }}>
-                            <Carousel
-                                data={nowPlaying}
-                                renderItem={({ item }: any) => <MovieCard movie={item} />}
-                                itemWidth={300}
-                                sliderWidth={windowWidth}
-                                onSnapToItem={(index) => getImageColors(index)} />
-                        </View>
-                        <MovieSliceHorizontal movies={popular} title='Popular' />
-                        <MovieSliceHorizontal movies={topRated} title='Top rated' />
-                        <MovieSliceHorizontal movies={upcoming} title='Upcoming' />
-                    </View>
-                </ScrollView>
-            </BackGroundGradient>
-            )}
+            {isLoading ?
+                <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+                    <ActivityIndicator size={60} />
+                </View> : (
+                    <BackGroundGradient>
+                        <ScrollView>
+                            <SearchBar />
+                            <View style={{ marginTop: top + 20, flex: 1 }}>
+                                <View style={{ height: 440 }}>
+                                    <Carousel
+                                        data={nowPlaying}
+                                        renderItem={({ item }: any) => <MovieCard movie={item} />}
+                                        itemWidth={300}
+                                        sliderWidth={windowWidth}
+                                        onSnapToItem={(index) => getImageColors(index)} />
+                                </View>
+                                <MovieSliceHorizontal movies={popular} title='Popular' />
+                                <MovieSliceHorizontal movies={topRated} title='Top rated' />
+                                <MovieSliceHorizontal movies={upcoming} title='Upcoming' />
+                            </View>
+                          
+                        </ScrollView>
+                        
+                    </BackGroundGradient>
+                )}
 
         </>
     )

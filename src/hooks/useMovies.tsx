@@ -12,7 +12,6 @@ interface MoviesState {
 
 const useMovies = () => {
 
- 
     const [isLoading, setIsLoading] = useState<boolean>(true);
 
     const [movies, setMovies] = useState<MoviesState>({
@@ -25,10 +24,10 @@ const useMovies = () => {
     const getMovies = async () => {
 
         try {
-            const nowPlayingMovies=  MovieDB.get<MovieInterface>('/now_playing');
-            const pupularMovies  =  MovieDB.get<MovieInterface>('/popular');
-            const upcomingMovies  = MovieDB.get<MovieInterface>('/top_rated');
-            const topRatedgMovies  = MovieDB.get<MovieInterface>('/upcoming');
+            const nowPlayingMovies=  MovieDB.get<MovieInterface>('/movie/now_playing');
+            const pupularMovies  =  MovieDB.get<MovieInterface>('/movie/popular');
+            const upcomingMovies  = MovieDB.get<MovieInterface>('/movie/top_rated');
+            const topRatedgMovies  = MovieDB.get<MovieInterface>('/movie/upcoming');
 
             const data = await Promise.all([nowPlayingMovies, pupularMovies, upcomingMovies, topRatedgMovies])
             setMovies({
